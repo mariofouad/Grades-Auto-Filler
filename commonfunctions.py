@@ -1,10 +1,10 @@
 import skimage.io as io
 import matplotlib.pyplot as plt
 import numpy as np
-from skimage.exposure import histogram, equalize_hist
+from skimage.exposure import histogram, equalize_hist , equalize_adapthist
 from matplotlib.pyplot import bar
 from skimage.color import rgb2gray,rgb2hsv,rgba2rgb
-
+import cv2 as cv2
 # Convolution:
 from scipy.signal import convolve2d
 from scipy import fftpack
@@ -15,7 +15,7 @@ from skimage.filters import median, gaussian
 from skimage.feature import canny
 from skimage.measure import label
 from skimage.color import label2rgb
-from skimage.transform import hough_line, hough_line_peaks
+from skimage.transform import hough_line, hough_line_peaks,probabilistic_hough_line, rotate
 
 # Edges
 from skimage.filters import sobel_h, sobel, sobel_v,roberts, prewitt
