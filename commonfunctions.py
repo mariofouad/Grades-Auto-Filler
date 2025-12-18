@@ -11,11 +11,12 @@ from scipy import fftpack
 import math
 
 from skimage.util import random_noise
-from skimage.filters import median, gaussian
+from skimage.filters import median, gaussian, threshold_local
 from skimage.feature import canny
 from skimage.measure import label
 from skimage.color import label2rgb
 from skimage.transform import hough_line, hough_line_peaks,probabilistic_hough_line, rotate
+from skimage.exposure import adjust_gamma
 
 # Edges
 from skimage.filters import sobel_h, sobel, sobel_v,roberts, prewitt
