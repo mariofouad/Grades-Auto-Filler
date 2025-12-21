@@ -50,12 +50,9 @@ def show_images(images,titles=None):
     plt.show() 
 
 
-def showHist(img):
-    # An "interface" to matplotlib.axes.Axes.hist() method
+def showHist(img,histogramImg):
     plt.figure()
-    imgHist = histogram(img, nbins=256)
-    
-    bar(imgHist[1].astype(np.uint8), imgHist[0], width=0.8, align='center')
+    bar(histogramImg[1]*255, histogramImg[0], width=0.8, align='center')
 
 
 def order_points(pts): # take 4 points and orders them as follows:top left,top right,bottom left,bottom right
@@ -96,6 +93,8 @@ def four_point(image,pts):
 
 #it takes image and tries to find the 4 corner points to apply warping on it
 def detect_document_contour(image):
+    if image.shape[2] > 3:
+        image = image[:, :, :3]
     gray=rgb2gray(image)
     gray_blurred=gaussian(gray,sigma=1)
     edges = canny(gray_blurred, sigma=1, low_threshold=30/255, high_threshold=100/255).astype(np.uint8) * 255
@@ -162,7 +161,7 @@ def preprocessing(image):
     image_gray = rgb2gray(warped)    
  
     image_deskewed=deskew(image_gray)
-  
+
     return image_deskewed
 
 def export_excel(data, file_name,column_names=None):
