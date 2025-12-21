@@ -291,8 +291,6 @@ def cell_extraction(image):
 
     return cell_images
 
-
-
 def enhance_cell_for_ocr_skimage(cell_gray, out_size=96):
     cell = util.img_as_float(cell_gray)  # ensure float [0..1]
 
